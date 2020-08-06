@@ -1,0 +1,55 @@
+{% extends "home/wrapper.html" %}
+
+{% block title %}ABOUT{% endblock %}
+{% block a %} active {% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="row jumbotron">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+            <p class="lead">
+                He's strange man <br>
+                But I'm gonna like him <br>
+                He's a loop-man <br>
+                But I wanna tell him <br>
+
+
+                I've just been in "There" <br>
+                He has come in "Here" <br>
+                We need be in touch <br>
+                It'll be a being-crash <br>
+
+                He's strange me <br>
+                But I'm gonna like him <br>
+                He's a loop-me <br>
+                But I wanna tell him <br>
+
+                I'm already going "Here" <br>
+                He is leaving "There" <br>
+                We need to rush <br>
+                It's a being-crash <br>
+
+                I'm strange man <br>
+                But you wanna like me <br>
+                I'm a loop-man <br>
+                But you're gonna tell me <br>
+
+                We're strange men <br>
+                It's been our wish <br>
+                We're loops-men <br>
+                It's the being-crash <br>
+            </p>
+        </div>
+    </div>
+    <div class="row jumbotron">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+            <p>
+                If you want - you can --->
+            </p>
+            <a href="{% url 'contact' %}"><button align="right" class="btn btn-warning btn-lg" type="button">Write
+                    me</button></a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

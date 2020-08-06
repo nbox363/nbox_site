@@ -1,0 +1,32 @@
+.navbar-brand img {
+    width: 100px;
+}
+
+.social {
+    font-size: 4em;
+    padding: 20px;
+}
+
+.fa-facebook {color: #3b5998;}
+
+.fa-instagram {color: #517fa4;}
+
+.fa-twitter {color: #00aced;}
+
+.fa-google-plus-g {color: #dd4b39;}
+
+.fa-facebook:hover, .fa-instagram:hover, .fa-twitter:hover, .fa-google-plus-g:hover {
+    color: #ccc;
+}
+
+footer {
+    background-color: #3f3f3f;
+    padding-top: 50px;
+    border-top: 4px solid silver;
+    color: snow;
+}
+
+.my_p {
+    text-indent: 20px;
+}
+

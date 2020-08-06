@@ -1,0 +1,18 @@
+{% extends "home/wrapper.html" %}
+{% block title %} ARTICLES {% endblock %}
+{% block p %} active {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row jumbotron">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+            {% for post in object_list %}
+            <a class="text-dark" href="{% url 'article' pk=post.pk %}">
+                <h3>{{post.title}}</h3>
+            </a>
+            <h6 class="text-secondary">{{post.date|date:"d-m-Y"}}</h6><br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
