@@ -11,4 +11,11 @@
 <h6 class="text-secondary">{{post.date|date:"d-m-Y"}}</h6><br>
 {% endfor %}
 
+<div class="row jumbotron">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+        <a href="{% url 'create' %}"><button class="btn btn-outline-secondary btn-lg" type="button">Add new
+                article</button></a>
+    </div>
+</div>
+
 {% endblock %}

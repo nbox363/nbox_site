@@ -1,6 +1,21 @@
 from django.views.generic import DetailView, ListView
+from django.shortcuts import render, redirect
 
+from .forms import ArticlesForm
 from .models import Articles
+
+
+def article_create_view(request):
+    form = ArticlesForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('articles')
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'articles/article_create_page.html', context)
 
 
 class ArticleView(DetailView):
