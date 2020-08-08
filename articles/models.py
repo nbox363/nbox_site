@@ -1,10 +1,10 @@
 from django.db import models
-from django.core import validators
+from tinymce.models import HTMLField
 
 
 class Articles(models.Model):
     title = models.CharField(max_length=120)
-    content = models.TextField()
+    content = HTMLField()
     date = models.DateTimeField()
 
     def __str__(self):

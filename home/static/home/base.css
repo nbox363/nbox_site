@@ -3,8 +3,7 @@
 }
 
 .social {
-    font-size: 4em;
-    padding: 20px;
+    font-size: 30px;
 }
 
 .fa-facebook {color: #3b5998;}
@@ -21,9 +20,17 @@
 
 footer {
     background-color: #3f3f3f;
-    padding-top: 50px;
     border-top: 4px solid silver;
     color: snow;
+    height: 85px;
+    position: absolute;
+    bottom: 0;
+}
+
+body {
+    padding-bottom: 90px;
+    position: relative;
+    min-height: 100vh;
 }
 
 .my_p {
