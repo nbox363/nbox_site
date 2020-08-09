@@ -48,10 +48,6 @@
                     <a href="{% url 'about' %}" class="nav-link">About me</a>
                 </li>
 
-                <li class="nav-item {% block c %}{% endblock %}">
-                    <a href="{% url 'contact' %}" class="nav-link">Contacts</a>
-                </li>
-
                 <li class="nav-item dropdown {% block p %}{% endblock %}">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Projects
@@ -80,8 +76,8 @@
 <footer class="container-fluid">
     <div class="container-fluid">
         <div class="row padding text-center">
-            <div class="col-12">
-                <h4>Contacts</h4>
+            <div class="col-12" style="margin-bottom: -10px; margin-top: 5px;">
+                <h5>My Contacts</h5>
             </div>
             <div class="col-12 social padding">
                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -92,13 +88,5 @@
         </div>
     </div>
 </footer>
-
-
-<!-- <footer class="fixed-bottom" style="background-color: #313131;">
-    <div class="container">
-        <span class="text-muted">My great fixed footer.</span>
-    </div>
-</footer> -->
-
 
 </html>

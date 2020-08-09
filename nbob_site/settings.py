@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'articles',
     'works',
     'tinymce',
+    'django_wysiwyg',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,7 +60,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'nbob_site.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
