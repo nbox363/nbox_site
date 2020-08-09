@@ -6,10 +6,12 @@ from .models import Articles
 
 
 def article_create_view(request):
-    form = ArticlesForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('articles')
+    form = ArticlesForm()
+    if request.method == 'POST':
+        form = ArticlesForm(request.POST)
+        if form.is_valid():
+            Articles.objects.create(**form.cleaned_data)
+            return redirect('articles')
 
     context = {
         'form': form
