@@ -1,8 +1,6 @@
-from django import forms
-
 import datetime
 
-from .models import Articles
+from django import forms
 
 
 class ArticlesForm(forms.Form):
@@ -13,7 +11,6 @@ class ArticlesForm(forms.Form):
             }
         )
     )
-
     content = forms.CharField(
         widget=forms.Textarea(
             attrs={
@@ -21,5 +18,4 @@ class ArticlesForm(forms.Form):
             }
         )
     )
-
     date = forms.DateField(initial=datetime.datetime.now())
