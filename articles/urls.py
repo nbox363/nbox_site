@@ -1,6 +1,5 @@
 from django.urls import path
 
-from .models import Articles
 from .views import ArticleView, ArticlesView
 
 urlpatterns = [

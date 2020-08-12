@@ -37,6 +37,6 @@ class ArticlesView(ListView):
         return Articles.objects.all().order_by('-date')[:5]
 
     def get_context_data(self, *args, **kwargs):
-        contex = super().get_context_data(*args, **kwargs)
-        contex['articles'] = Articles.objects.all()
-        return contex
+        context = super().get_context_data(*args, **kwargs)
+        context['articles'] = Articles.objects.all()
+        return context
