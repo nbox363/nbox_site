@@ -1,13 +1,15 @@
 {% extends "home/wrapper.html" %}
 
-{% block title %} {{ articles.title }} {% endblock %}
+{% block title %} {{ articles.title }} {% endblock title %}
 
 {% block content %}
 
-<h2 class="text-info">{{articles.title}}</h2>
-<p class="my_p">{{articles.content|safe|linebreaks}}</p>
-<h6 class="text-info">{{articles.date|date:"d-m-Y"}}</h6>
+    <hr><h2 class="text-info">{{articles.title}}</h2><hr><br>
+    <p class="my_p">{{articles.content|safe|linebreaks}}</p><br><br>
+    <h6 class="text-info" align="right">{{articles.date|date:"d-m-Y"}}</h6>
 
-<p> {{comments}}</p>
+<a href="{% url 'articles' %}">
+    <button type="button" class="btn btn-outline-secondary btn-lg">Back</button>
+</a>
 
-{% endblock %}
+{% endblock content %}

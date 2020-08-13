@@ -27,10 +27,15 @@
 </head>
 
 <body>
+
+    {# navbar block #}
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 
-        <a href="{% url 'home' %}" class="navbar-brand"><img src="{% static 'home/nav.PNG' %}"></a>
+        <a href="{% url 'home' %}" class="navbar-brand">
+            <img src="{% static 'home/nav.PNG' %}">
+        </a>
 
+        {# block for mini menu for phone #}
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -38,18 +43,14 @@
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item {% block h %}{% endblock %}">
-                    <a class="nav-link" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
-                </li>
 
-                <li class="nav-item {% block a %}{% endblock %}">
+                <li class="nav-item {% block a %}{% endblock a%}">
                     <a href="{% url 'about' %}" class="nav-link">About me</a>
                 </li>
 
-                <li class="nav-item dropdown {% block p %}{% endblock %}">
+                <li class="nav-item dropdown {% block p %}{% endblock p %}">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Projects
-                    </a>
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Projects</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'articles' %}">My articles</a>
                         <a class="dropdown-item" href="{% url 'works' %}">My work</a>
@@ -57,38 +58,43 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Log in<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{% url 'login' %}">Log in
+                        <span class="sr-only">(current)</span>
+                    </a>
                 </li>
+
             </ul>
         </div>
     </nav>
 
+    {# block content #}
     <div class="container">
         <div class="row jumbotron" style="margin-bottom: 0;">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 {% block content %}
-                {% endblock %}
+
+                {% endblock content %}
             </div>
         </div>
     </div>
+
+    {# block footer #}
+    <footer class="container-fluid">
+        <div class="container-fluid">
+            <div class="row padding text-center">
+                <div class="col-12" style="margin-bottom: -10px; margin-top: 5px;">
+                    <h5>My Contacts</h5>
+                </div>
+                <div class="col-12 social padding">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
-
-
-
-<footer class="container-fluid">
-    <div class="container-fluid">
-        <div class="row padding text-center">
-            <div class="col-12" style="margin-bottom: -10px; margin-top: 5px;">
-                <h5>My Contacts</h5>
-            </div>
-            <div class="col-12 social padding">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-google-plus-g"></i></a>
-            </div>
-        </div>
-    </div>
-</footer>
 
 </html>
