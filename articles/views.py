@@ -2,7 +2,7 @@ from django.views.generic import DetailView, ListView, CreateView
 from django.urls import reverse_lazy
 from django.utils.timezone import now
 
-from .forms import ArticlesForm
+from .forms import ArticlesForm, AddCommentForm
 from .models import Articles, Comments
 
 
@@ -26,14 +26,23 @@ class ArticlesView(ListView):
     #     return context
 
 
-class CommentsView(ListView):
-    template_name = 'articles/article_page.html'
-    model = Comments
-
-
 class CreateArticleView(CreateView):
     model = Articles
     form_class = ArticlesForm
     template_name = 'articles/article_create_page.html'
     initial = {'date': now()}
     success_url = reverse_lazy('articles')
+
+
+class AddCommentView(CreateView):
+    model = Comments
+    form_class = AddCommentForm
+    template_name = 'articles/add_comment.html'
+
+    def form_valid(self, form):
+        form.instance.articles_id = self.kwargs['pk']
+        return super().form_valid(form)
+
+    success_url = reverse_lazy('home')
+
+
