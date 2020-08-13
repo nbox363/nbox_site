@@ -1,0 +1,23 @@
+{% extends "home/wrapper.html" %}
+
+{% block title %}Login{% endblock title %}
+{% block l %}active{% endblock l%}
+
+{% block content %}
+
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-outline-secondary btn-lg">Login
+            </button>
+        <a href="{% url 'register' %}">
+            <button class="btn btn-outline-primary btn-lg" type="button">Register</button>
+        </a>
+        </form>
+
+    </div>
+
+
+
+{% endblock content %}

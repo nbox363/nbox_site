@@ -57,11 +57,19 @@
                     </div>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Log in
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
+            {% if user.is_authenticated %}
+
+                 <li class="nav-item {% block lo %}{% endblock lo%}">
+                     <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                 </li>
+
+            {% else %}
+
+                 <li class="nav-item {% block l %}{% endblock l%}">
+                     <a href="{% url 'login' %}" class="nav-link">Login</a>
+                 </li>
+
+            {% endif %}
 
             </ul>
         </div>

@@ -4,12 +4,16 @@
 
 {% block content %}
 
-    <hr><h2 class="text-info">{{articles.title}}</h2><hr><br>
+    <hr><h2 class="text-dark">{{articles.title}}</h2><hr><br>
     <p class="my_p">{{articles.content|safe|linebreaks}}</p><br><br>
     <h6 class="text-info" align="right">{{articles.date|date:"d-m-Y"}}</h6>
 
-<a href="{% url 'articles' %}">
-    <button type="button" class="btn btn-outline-secondary btn-lg">Back</button>
-</a>
+    {% for comment in comments_list %}
+        <p>{{ comment.author }}</p>
+    {% endfor %}
+
+    <a href="{% url 'articles' %}">
+        <button type="button" class="btn btn-outline-secondary btn-lg">Back</button>
+    </a>
 
 {% endblock content %}

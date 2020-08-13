@@ -1,13 +1,13 @@
-from tinymce.models import HTMLField
-
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
+
+from tinymce.models import HTMLField
 
 
 class Articles(models.Model):
     title = models.CharField(
         max_length=120,
-        verbose_name='Title',)
+        verbose_name='Title')
     content = HTMLField(verbose_name='Article text')
     date = models.DateTimeField(verbose_name='Publication date')
 
