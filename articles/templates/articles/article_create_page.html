@@ -4,16 +4,12 @@
 
 {% block content %}
 
-<table>
-
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_table }}
-    </table>
-    <p>
-        <input class="btn btn-outline-secondary btn-lg" type="submit" value="Add article">
-    </p>
-
-</form>
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p}}
+            <button class="btn btn-outline-secondary btn-lg">Post</button>
+        </form>
+    </div>
 
 {% endblock %}

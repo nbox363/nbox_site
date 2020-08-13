@@ -1,9 +1,8 @@
 from django.views.generic import DetailView, ListView, CreateView
-from django.shortcuts import render, reverse, redirect
+from django.shortcuts import reverse
 from django.utils.timezone import now
-
 from .forms import ArticlesForm
-from .models import Articles, Comments
+from .models import Articles
 
 
 class ArticleView(DetailView):
@@ -32,8 +31,8 @@ class ArticlesView(ListView):
 
 class CreateArticleView(CreateView):
     model = Articles
+    form_class = ArticlesForm
     template_name = 'articles/article_create_page.html'
-    fields = '__all__'
 
     def get_success_url(self):
         return reverse('articles')
