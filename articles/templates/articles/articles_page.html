@@ -8,17 +8,13 @@
         <a class="text-dark" href="{% url 'article' post.pk %}">
             <h3>{{post.title}}</h3>
         </a>
-        <h6 class="text-secondary">{{post.date|date:"d-m-Y"}}</h6><br>
-    {% endfor %}
+        <h6 class="text-secondary">{{post.date|date:"d-m-Y"}}</h6><hr>
+    {% endfor %}<br><br>
 
     {% if user.is_authenticated %}
-        <div class="row jumbotron">
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-                <a href="{% url 'create' %}">
-                    <button class="btn btn-outline-secondary btn-lg" type="button">Add new article</button>
-                </a>
-            </div>
-        </div>
+        <a href="{% url 'create' %}">
+            <button class="btn btn-outline-secondary btn-lg" type="button">Add new article</button>
+        </a>
     {% endif %}
 
 {% endblock %}

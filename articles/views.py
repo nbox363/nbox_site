@@ -1,6 +1,7 @@
 from django.views.generic import DetailView, ListView, CreateView
 from django.urls import reverse_lazy
 from django.utils.timezone import now
+from django.contrib.auth.models import User
 
 from .forms import ArticlesForm, AddCommentForm
 from .models import Articles, Comments
@@ -37,12 +38,13 @@ class CreateArticleView(CreateView):
 class AddCommentView(CreateView):
     model = Comments
     form_class = AddCommentForm
+    initial = {'author': User}
     template_name = 'articles/add_comment.html'
+    success_url = reverse_lazy('articles')
 
-    def form_valid(self, form):
-        form.instance.articles_id = self.kwargs['pk']
-        return super().form_valid(form)
 
-    success_url = reverse_lazy('home')
+
+
+
 
 

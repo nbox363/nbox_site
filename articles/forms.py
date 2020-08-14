@@ -1,6 +1,6 @@
 from django import forms
 from .models import Articles, Category, Comments
-
+from django.contrib.auth.models import User
 
 choices_category_of_article = Category.objects.all().values_list('name', 'name')
 
@@ -23,10 +23,10 @@ class ArticlesForm(forms.ModelForm):
 class AddCommentForm(forms.ModelForm):
     class Meta:
         model = Comments
-        fields = ('author', 'comment_text')
+        fields = ('author', 'comment_text', 'article')
         widgets = {
-            'author': forms.TextInput(attrs={'placeholder': 'Your name',
-                                            'class': 'form-control'}),
+            'author': forms.Select(attrs={'placeholder': 'Your name',
+                                          'class': 'form-control'}),
             'comment_text': forms.Textarea(attrs={'placeholder': 'Your comment',
-                                             'class': 'form-control'})
+                                                  'class': 'form-control'})
         }
