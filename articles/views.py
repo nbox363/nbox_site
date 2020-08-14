@@ -11,21 +11,22 @@ from .models import Articles, Comments, Category
 class ArticleView(DetailView):
     template_name = 'articles/article_page.html'
     model = Articles
-    # def get_context_data(self, *args, **kwargs):
-    #     context = super().get_context_data(*args, **kwargs)
-    #     context['article'] = Articles.objects.all()
-    #     context['comments'] = Comments.objects.all()
-    #     return context
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['categories'] = Category.objects.all()
+        return context
 
 
 class ArticlesView(ListView):
     template_name = 'articles/articles_page.html'
     model = Articles
-    queryset = Articles.objects.all().order_by('-date')[:20]
-    # def get_context_data(self, *args, **kwargs):
-    #     context = super().get_context_data(*args, **kwargs)
-    #     context['articles'] = Articles.objects.all()
-    #     return context
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['articles'] = Articles.objects.all().order_by('-date')[:20]
+        context['categories'] = Category.objects.all()
+        return context
 
 
 class CreateArticleView(CreateView):
@@ -44,9 +45,9 @@ class AddCommentView(CreateView):
     success_url = reverse_lazy('articles')
 
 
-def category_view(request, category_name):
+def current_category_view(request, category_name):
     category_article = Articles.objects.filter(category=category_name)
-    context = {'category_name': category_name,
+    context = {'category_name':    category_name,
                'category_article': category_article}
     template = 'articles/by_category_view.html'
     return render(request, template, context)
@@ -55,7 +56,11 @@ def category_view(request, category_name):
 class AllCategoryView(ListView):
     template_name = 'articles/all_category_view.html'
     model = Category
-    queryset = Category.objects.all()
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['categories'] = Category.objects.all()
+        return context
 
 
 

@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    {% for category in object_list %}
+    {% for category in categories %}
         <ul>
 
             <a class="text-dark" href="{% url 'category' category|slugify %}">

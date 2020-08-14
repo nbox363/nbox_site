@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    {% for post in object_list %}
+    {% for post in articles %}
         <a class="text-dark" href="{% url 'article' post.pk %}">
             <h3>{{post.title}}</h3>
         </a>

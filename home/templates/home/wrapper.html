@@ -31,8 +31,8 @@
     {# navbar block #}
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 
-        <a href="{% url 'home' %}" class="navbar-brand">
-            <img src="{% static 'home/nav.PNG' %}">
+        <a href="{% url 'home' %}" class="navbar-brand">Nbox
+            <img src="{% static 'home/nav.PNG' %}">Site
         </a>
 
         {# block for mini menu for phone #}
@@ -51,31 +51,51 @@
 
                 <li class="nav-item dropdown {% block ar %}{% endblock ar %}">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My articles</a>
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        My Articles
+                    </a>
+
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'articles' %}">Articles</a>
-                        <a class="dropdown-item" href="{% url 'by_category' %}">Categories</a>
+                        <a class="dropdown-item" href="{% url 'articles' %}">
+                            Articles
+                        </a>
+
+                        <a href="#" class="nav-link dropdown-toggle" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            style="margin-left: 15px">
+                            Categories
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% for category in categories %}
+                                    <a class="dropdown-item" href="{% url 'category' category %}">
+                                        {{ category }}
+                                    </a>
+                                {% endfor %}
+                        </div>
                     </div>
                 </li>
 
                 <li class="nav-item {% block w %}{% endblock w%}">
-                    <a href="{% url 'works' %}" class="nav-link">My work</a>
+                    <a href="{% url 'works' %}" class="nav-link">
+                        My works
+                    </a>
                 </li>
 
 
-            {% if user.is_authenticated %}
-
-                 <li class="nav-item {% block lo %}{% endblock lo%}">
-                     <a href="{% url 'logout' %}" class="nav-link">Logout</a>
-                 </li>
-
-            {% else %}
-
-                 <li class="nav-item {% block l %}{% endblock l%}">
-                     <a href="{% url 'login' %}" class="nav-link">Login</a>
-                 </li>
-
-            {% endif %}
+                {% if user.is_authenticated %}
+                     <li class="nav-item {% block lo %}{% endblock lo%}">
+                         <a href="{% url 'logout' %}" class="nav-link">
+                             Logout
+                         </a>
+                     </li>
+                {% else %}
+                     <li class="nav-item {% block l %}{% endblock l%}">
+                         <a href="{% url 'login' %}" class="nav-link">
+                             Login
+                         </a>
+                     </li>
+                {% endif %}
 
             </ul>
         </div>
