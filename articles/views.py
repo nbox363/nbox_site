@@ -52,6 +52,11 @@ def category_view(request, category_name):
     return render(request, template, context)
 
 
+class AllCategoryView(ListView):
+    template_name = 'articles/all_category_view.html'
+    model = Category
+    queryset = Category.objects.all()
+
 
 
 

@@ -48,14 +48,20 @@
                     <a href="{% url 'about' %}" class="nav-link">About me</a>
                 </li>
 
-                <li class="nav-item dropdown {% block p %}{% endblock p %}">
+
+                <li class="nav-item dropdown {% block ar %}{% endblock ar %}">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Projects</a>
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My articles</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'articles' %}">My articles</a>
-                        <a class="dropdown-item" href="{% url 'works' %}">My work</a>
+                        <a class="dropdown-item" href="{% url 'articles' %}">Articles</a>
+                        <a class="dropdown-item" href="{% url 'by_category' %}">Categories</a>
                     </div>
                 </li>
+
+                <li class="nav-item {% block w %}{% endblock w%}">
+                    <a href="{% url 'works' %}" class="nav-link">My work</a>
+                </li>
+
 
             {% if user.is_authenticated %}
 

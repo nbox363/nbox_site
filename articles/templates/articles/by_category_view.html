@@ -1,6 +1,6 @@
 {% extends "home/wrapper.html" %}
 {% block title %} {{ category_name }} {% endblock %}
-
+{% block ar %} active {% endblock %}
 
 {% block content %}
 
@@ -10,7 +10,7 @@
             {% for article in category_article %}
 
                     <a class="text-dark" href="{% url 'article' article.pk %}">
-                        <h3>{{ article.title }}</h3>
+                        <h3>{{ article.title }}</h3><hr>
                     </a>
 
             {% endfor %}

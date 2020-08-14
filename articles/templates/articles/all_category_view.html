@@ -1,0 +1,17 @@
+{% extends "home/wrapper.html" %}
+{% block title %} Categories {% endblock %}
+{% block ar %} active {% endblock %}
+
+{% block content %}
+
+    {% for category in object_list %}
+        <ul>
+
+            <a class="text-dark" href="{% url 'category' category|slugify %}">
+                <h3>{{ category }}</h3><hr>
+            </a>
+
+        </ul>
+    {% endfor %}
+
+{% endblock %}
