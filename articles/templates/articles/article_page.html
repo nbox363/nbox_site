@@ -4,7 +4,12 @@
 
 {% block content %}
 
-    <hr><h2 class="text-dark">{{articles.title}}</h2><hr><br>
+    <hr><h2 class="text-dark">{{articles.title}}</h2>
+
+    <a href="{% url 'category' articles.category|slugify %}">
+        <h3>{{ articles.category }}</h3>
+    </a>
+
     <p class="my_p">{{articles.content|safe|linebreaks}}</p><br><br>
     <h6 class="text-info" align="right">{{articles.date|date:"d-m-Y"}}</h6><hr><br>
 

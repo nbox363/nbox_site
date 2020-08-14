@@ -1,10 +1,11 @@
 from django.views.generic import DetailView, ListView, CreateView
 from django.urls import reverse_lazy
+from django.shortcuts import render
 from django.utils.timezone import now
 from django.contrib.auth.models import User
 
 from .forms import ArticlesForm, AddCommentForm
-from .models import Articles, Comments
+from .models import Articles, Comments, Category
 
 
 class ArticleView(DetailView):
@@ -41,6 +42,15 @@ class AddCommentView(CreateView):
     initial = {'author': User}
     template_name = 'articles/add_comment.html'
     success_url = reverse_lazy('articles')
+
+
+def category_view(request, category_name):
+    category_article = Articles.objects.filter(category=category_name)
+    context = {'category_name': category_name,
+               'category_article': category_article}
+    template = 'articles/by_category_view.html'
+    return render(request, template, context)
+
 
 
 
