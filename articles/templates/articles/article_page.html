@@ -1,6 +1,7 @@
 {% extends "home/wrapper.html" %}
 
 {% block title %} {{ articles.title }} {% endblock title %}
+
 {% block ar %} active {% endblock %}
 
 {% block content %}
@@ -17,6 +18,7 @@
     <div class="container" style="margin-left: 100px">
         <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+
                     <h3>Comments</h3><hr>
 
                     {% if not articles.comments.all %}
@@ -42,12 +44,32 @@
                         {% endif %}
 
                     {% endif %}
+
                 </div>
         </div>
     </div><br><hr>
 
     <a href="{% url 'articles' %}">
         <button type="button" class="btn btn-outline-secondary btn-lg">Back</button>
-    </a>
+    </a><br><br><hr>
+
+    {% if user.is_authenticated %}
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <h4>Add comment... if you want</h4><p>and you now...</p>
+             <div class="form-group">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_table}}<br><br>
+                    <button class="btn btn-outline-dark">
+                        Add comment
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    {% endif %}
+
+
 
 {% endblock content %}
