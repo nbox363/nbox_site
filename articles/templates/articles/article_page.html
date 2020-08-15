@@ -21,6 +21,8 @@
 
                     <h3>Comments</h3><hr>
 
+                <p>{{ articles.id }}</p>
+
                     {% if not articles.comments.all %}
                         <p>No comment Yet</p>
 
@@ -66,6 +68,16 @@
                     </button>
                 </form>
             </div>
+
+            <script>
+                var name = "{{ user.id }}";
+                document.getElementById("current_user").value = name;
+            </script>
+
+            <script>
+                var article = "{{ articles.id }}";
+                document.getElementById("current_article").value = article;
+            </script>
         </div>
 
     {% endif %}

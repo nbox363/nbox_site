@@ -25,10 +25,16 @@ class AddCommentForm(forms.ModelForm):
         model = Comments
         fields = ('author', 'comment_text', 'article')
         widgets = {
-            'author': forms.Select(attrs={'class': 'form-control'}),
+            'author': forms.TextInput(attrs={'class': 'form-control',
+                                             'id': 'current_user',
+                                             'value': '',
+                                             'type': 'hidden'}),
             'comment_text': forms.Textarea(attrs={'placeholder': 'Your comment',
                                                   'class': 'form-control'}),
-            'article': forms.Select(attrs={'class': 'form-control'})
+            'article': forms.TextInput(attrs={'class': 'form-control',
+                                              'id': 'current_article',
+                                              'value': '',
+                                              'type': 'hidden'})
         }
 
         # 'author': forms.TextInput(attrs={'value': '',

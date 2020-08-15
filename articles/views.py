@@ -44,6 +44,11 @@ class AddCommentView(CreateView):
     template_name = 'articles/add_comment.html'
     success_url = reverse_lazy('articles')
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['articles'] = Articles.objects.all()
+        return context
+
 
 def current_category_view(request, category_name):
     category_article = Articles.objects.filter(category=category_name)
