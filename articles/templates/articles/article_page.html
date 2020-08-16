@@ -21,8 +21,6 @@
 
                     <h3>Comments</h3><hr>
 
-                <p>{{ articles.id }}</p>
-
                     {% if not articles.comments.all %}
                         <p>No comment Yet</p>
 
@@ -35,7 +33,10 @@
                     {% else %}
 
                         {% for comment in articles.comments.all %}
-                            <h4 class="text-info">{{ comment.author }}</h4>
+                            <h4 class="text-info">{{ comment.author.first_name }} {{ comment.author.last_name }} |
+                                <small>{{ comment.author }}
+                                </small>
+                            </h4>
                             {{ comment.comment_text }}<hr>
                         {%  endfor %}
 
@@ -62,7 +63,7 @@
              <div class="form-group">
                 <form method="POST">
                     {% csrf_token %}
-                    {{ form.as_table}}<br><br>
+                    {{ form.as_table}}<br>
                     <button class="btn btn-outline-dark">
                         Add comment
                     </button>
@@ -78,10 +79,9 @@
                 var article = "{{ articles.id }}";
                 document.getElementById("current_article").value = article;
             </script>
+
         </div>
 
     {% endif %}
-
-
 
 {% endblock content %}

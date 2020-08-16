@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'members',
 
     'tinymce',
+    'ckeditor',
 
     'django.contrib.admin',
     'django.contrib.auth',

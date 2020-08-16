@@ -53,16 +53,8 @@ class AddCommentView(CreateView):
 def current_category_view(request, category_name):
     category_article = Articles.objects.filter(category=category_name)
     context = {'category_name':    category_name,
-               'category_article': category_article}
+               'category_article': category_article,
+               'categories': Category.objects.all()}
     template = 'articles/by_category_view.html'
     return render(request, template, context)
 
-
-class AllCategoryView(ListView):
-    template_name = 'articles/all_category_view.html'
-    model = Category
-
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['categories'] = Category.objects.all()
-        return context
