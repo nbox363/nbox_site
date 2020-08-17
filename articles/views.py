@@ -1,7 +1,9 @@
 from django.views.generic import DetailView, ListView, CreateView
 from django.urls import reverse_lazy
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils.timezone import now
+from django.http import HttpResponseRedirect
+
 
 from .forms import ArticlesForm, AddCommentForm
 from .models import Articles, Comments, Category
@@ -11,12 +13,16 @@ class ArticleView(DetailView, CreateView):
     template_name = 'articles/article_page.html'
     model = Articles
     form_class = AddCommentForm
-    success_url = reverse_lazy('articles')
+    # success_url = reverse_lazy('articles')
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['categories'] = Category.objects.all()
         return context
+
+    def form_valid(self, form):
+        form.save()
+        return HttpResponseRedirect('')
 
 
 class ArticlesView(ListView):
@@ -36,18 +42,6 @@ class CreateArticleView(CreateView):
     template_name = 'articles/article_create_page.html'
     initial = {'date': now()}
     success_url = reverse_lazy('articles')
-
-
-class AddCommentView(CreateView):
-    model = Comments
-    form_class = AddCommentForm
-    template_name = 'articles/add_comment.html'
-    success_url = reverse_lazy('articles')
-
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['articles'] = Articles.objects.all()
-        return context
 
 
 def current_category_view(request, category_name):

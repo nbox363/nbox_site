@@ -25,7 +25,7 @@
                         <p>No comment Yet</p>
 
                         {% if user.is_authenticated %}
-                            <a href="{% url 'add_comment' articles.pk %}">
+                            <a href="#1">
                                 <button type="button" class="btn btn-outline-dark">Add one</button>
                             </a>
                         {% endif %}
@@ -41,7 +41,7 @@
                         {%  endfor %}
 
                         {% if user.is_authenticated %}
-                            <a href="{% url 'add_comment' articles.pk %}">
+                            <a href="#1">
                                 <button type="button" class="btn btn-outline-dark">Add comment</button>
                             </a>
                         {% endif %}
@@ -59,7 +59,9 @@
     {% if user.is_authenticated %}
 
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-            <h4>Add comment... if you want</h4><p>and you now...</p>
+            <a name="1">
+                <h4>Add comment... if you want</h4><p>and you now...</p>
+            </a>
              <div class="form-group">
                 <form method="POST">
                     {% csrf_token %}

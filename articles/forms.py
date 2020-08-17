@@ -1,5 +1,6 @@
 from django import forms
 from .models import Articles, Category, Comments
+from django.contrib.auth.models import User
 
 choices_category_of_article = Category.objects.all().values_list('name', 'name')
 

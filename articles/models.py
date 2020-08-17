@@ -2,7 +2,6 @@ from django.contrib.auth.models import User
 from django.db import models
 
 from ckeditor.fields import RichTextField
-from tinymce.models import HTMLField
 
 
 class Category(models.Model):
@@ -20,7 +19,6 @@ class Articles(models.Model):
     title = models.CharField(
         max_length=120,
         verbose_name='Title')
-    # content = HTMLField(verbose_name='Article text')
     content = RichTextField(blank=True, null=True)
     category = models.CharField(max_length=255, default='life')
     date = models.DateTimeField(verbose_name='Publication date')
@@ -41,7 +39,8 @@ class Comments(models.Model):
     comment_text = models.CharField(max_length=400)
 
     def __str__(self):
-        return str(self.article) + ' | ' + str(self.author)
+        return (str(self.article) + ' | ' + str(self.author) +
+                ' | ' + str(self.comment_text)[:23])
 
     class Meta:
         verbose_name = 'Comment'
