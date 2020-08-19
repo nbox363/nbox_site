@@ -1,5 +1,7 @@
 {% extends "home/wrapper.html" %}
 
+{% load static %}
+
 {% block title %} create article {% endblock %}
 
 {% block ar %}active{% endblock ar %}
@@ -11,7 +13,9 @@
             {% csrf_token %}
             {{ form.media}}
             {{ form.as_p}}
-            <button class="btn btn-outline-secondary btn-lg">Post</button>
+            <button class="btn btn-outline-secondary btn-lg">
+                Post
+            </button>
         </form>
     </div>
 

@@ -1,40 +1,57 @@
 {% extends "home/wrapper.html" %}
 
+{% load static %}
+
 {% block title %} {{ articles.title }} {% endblock title %}
 
 {% block ar %} active {% endblock %}
 
 {% block content %}
 
-    <hr><h2 class="text-dark">{{articles.title}}</h2>
+    <hr>
+    <h2 class="text-dark">
+        {{articles.title}}
+    </h2>
 
     <a href="{% url 'category' articles.category|slugify %}">
-        <h3>{{ articles.category }}</h3>
+        <h3>
+            {{ articles.category }}
+        </h3>
     </a>
 
-    <p class="my_p">{{articles.content|safe|linebreaks}}</p><br><br>
-    <h6 class="text-info" align="right">{{articles.date|date:"d-m-Y"}}</h6><hr><br>
+    <p class="my_p">
+        {{articles.content|safe|linebreaks}}
+    </p><br><br>
+
+    <h6 class="text-info" align="right">
+        {{articles.date|date:"d-m-Y"}}
+    </h6><hr><br>
 
     <div class="container" style="margin-left: 100px">
         <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 
-                    <h3>Comments</h3><hr>
+                    <h3>
+                        Comments
+                    </h3><hr>
 
                     {% if not articles.comments.all %}
                         <p>No comment Yet</p>
 
                         {% if user.is_authenticated %}
                             <a href="#1">
-                                <button type="button" class="btn btn-outline-dark">Add one</button>
+                                <button type="button" class="btn btn-outline-dark">
+                                    Add one
+                                </button>
                             </a>
                         {% endif %}
 
                     {% else %}
-
                         {% for comment in articles.comments.all %}
-                            <h4 class="text-info">{{ comment.author.first_name }} {{ comment.author.last_name }} |
-                                <small>{{ comment.author }}
+                            <h4 class="text-info">
+                                {{ comment.author.first_name }} {{ comment.author.last_name }} |
+                                <small>
+                                    {{ comment.author }}
                                 </small>
                             </h4>
                             {{ comment.comment_text }}<hr>
@@ -42,25 +59,33 @@
 
                         {% if user.is_authenticated %}
                             <a href="#1">
-                                <button type="button" class="btn btn-outline-dark">Add comment</button>
+                                <button type="button" class="btn btn-outline-dark">
+                                    Add comment
+                                </button>
                             </a>
                         {% endif %}
 
                     {% endif %}
-
                 </div>
         </div>
     </div><br><hr>
 
     <a href="{% url 'articles' %}">
-        <button type="button" class="btn btn-outline-secondary btn-lg">Back</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg">
+            Back
+        </button>
     </a><br><br><hr>
 
     {% if user.is_authenticated %}
 
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
             <a name="1">
-                <h4>Add comment... if you want</h4><p>and you now...</p>
+                <h4>
+                    Add comment... if you want
+                </h4>
+                <p>
+                    and you now...
+                </p>
             </a>
              <div class="form-group">
                 <form method="POST">
@@ -75,13 +100,9 @@
             <script>
                 var name = "{{ user.id }}";
                 document.getElementById("current_user").value = name;
-            </script>
-
-            <script>
                 var article = "{{ articles.id }}";
                 document.getElementById("current_article").value = article;
             </script>
-
         </div>
 
     {% endif %}

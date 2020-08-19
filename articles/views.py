@@ -13,7 +13,6 @@ class ArticleView(DetailView, CreateView):
     template_name = 'articles/article_page.html'
     model = Articles
     form_class = AddCommentForm
-    # success_url = reverse_lazy('articles')
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
