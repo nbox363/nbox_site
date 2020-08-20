@@ -1,0 +1,18 @@
+{% extends "home/wrapper.html" %}
+
+{% block title %}Edit Profile{% endblock title %}
+
+
+{% block content %}
+
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-outline-secondary btn-lg">
+                Update profile
+            </button>
+        </form>
+    </div>
+
+{% endblock content %}
