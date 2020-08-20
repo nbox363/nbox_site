@@ -21,7 +21,7 @@ class ArticleView(DetailView, CreateView):
 
     def form_valid(self, form):
         form.save()
-        return HttpResponseRedirect('')
+        return HttpResponseRedirect('#redirect_after_post_a_comment')
 
 
 class ArticlesView(ListView):

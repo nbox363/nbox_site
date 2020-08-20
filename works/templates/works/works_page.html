@@ -1,8 +1,71 @@
 {% extends "home/wrapper.html" %}
 
+{% load static %}
+
 {% block title %} My works {% endblock %}
+
 {% block w %} active {% endblock %}
 
 {% block content %}
-    <p>Here will be my work</p>
+
+    <div class="container-fluid padding">
+        <div class="row alert text-center">
+            <div class="col-12">
+                <h1 class="display-4">My bitches</h1>
+            </div>
+            <hr>
+        </div>
+    </div>
+
+    <div class="container padding">
+        <div class="row padding">
+            <div class="col-md-7">
+                <div class="card">
+                    <img src="{% static 'works/1.png' %}" class="card-img-top">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Unreal
+                        </h4>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur
+                            adipisicing elit. Voluptate alias a
+                            deleniti?
+                        </p>
+                        <a href="#" class="btn btn-warning">
+                            Look
+                        </a>
+                    </div>
+                </div><br><hr><br>
+            </div>
+
+            <div class="col-md-4">
+                <p align="justify">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Vestibulum velit nibh, tempus sit amet volutpat in,
+                    ullamcorper at nisi. Etiam pretium dapibus arcu eget
+                    efficitur. Nulla feugiat, sem ac varius pulvinar,
+                    libero lorem dapibus turpis, vitae auctor turpis nisl nec sapien.
+                    Fusce ac sapien ullamcorper, pellentesque erat ac, maximus lectus.
+                    Morbi in mattis urna. Cras placerat massa ut magna vulputate, eget
+                    luctus risus pellentesque. Integer blandit pulvinar mi, quis efficitur
+                    justo vestibulum vel.
+                </p>
+            </div>
+
+
+            <div class="col-md-7">
+                <div class="card">
+                    <img src="https://www.python.org/static/img/python-logo.png" class="card-img-top">
+                    <div class="card-body">
+                        <h4 class="card-title">LOLOLO</h4>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate alias a
+                            deleniti?</p>
+                        <a href="#" class="btn btn-warning">Look</a>
+                    </div>
+                </div><br>
+            </div><hr><br>
+
+
+        </div>
+    </div>
 {% endblock %}
