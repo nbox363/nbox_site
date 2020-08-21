@@ -18,9 +18,10 @@
         <h6 class="text-secondary">
             {{post.date|date:"d-m-Y"}}
         </h6><hr>
-    {% endfor %}<br><br>
+    {% endfor %}
 
-    {% if user.is_authenticated %}
+    {% if user.is_superuser %}
+        <br><br>
         <a href="{% url 'create' %}">
             <button class="btn btn-outline-secondary btn-lg" type="button">
                 Add new article
