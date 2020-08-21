@@ -30,7 +30,7 @@ class AddCommentForm(forms.ModelForm):
                                              'value': '',
                                              'type': 'hidden'}),
             'comment_text': forms.Textarea(attrs={'placeholder': 'Your comment',
-                                                  'class': 'form-control'}),
+                                                  'class': 'md-textarea form-control'}),
             'article': forms.TextInput(attrs={'class': 'form-control',
                                               'id': 'current_article',
                                               'value': '',

@@ -5,12 +5,44 @@
 
 {% block content %}
 
-    <div class="form-group">
-        <form method="POST">
+    <!-- Default form register -->
+    <div class="container col-md-7 border border-secondary p-5">
+        <form class="text-center" method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button class="btn btn-outline-secondary btn-lg">Register
-            </button>
+            <p class="h4 mb-4">
+                Sign up
+            </p>
+
+            <div class="form-row mb-4">
+                <div class="col">
+                    <!-- First name -->
+                    <input id="id_first_name" type="text" name="first_name" class="form-control"
+                           placeholder="First name">
+                </div>
+                <div class="col">
+                    <!-- Last name -->
+                    <input id="id_last_name" name="last_name" type="text" class="form-control" placeholder="Last name">
+                </div>
+            </div>
+
+            <!-- Username -->
+            <input type="text" name="username" id="id_username" class="form-control mb-4" placeholder="Username">
+
+            <!-- E-mail -->
+            <input id="id_email" name="email" type="email" class="form-control mb-4" placeholder="E-mail">
+
+            <!-- Password -->
+            <input id="id_password1" name="password1" autocomplete="new-password" type="password" class="form-control"
+                   placeholder="Password">
+            <small class="form-text text-muted mb-4">
+                At least 8 characters and 1 digit
+            </small>
+
+            <input id="id_password2" name="password2" autocomplete="new-password" type="password" class="form-control"
+                   placeholder="Password">
+
+            <!-- Sign up button -->
+            <button class="btn btn-secondary my-4 btn-block" type="submit">Sign in</button>
         </form>
     </div>
 

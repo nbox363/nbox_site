@@ -5,12 +5,41 @@
 
 {% block content %}
 
-    <div class="form-group">
-        <form method="POST">
+    <div class="container col-md-7 border border-secondary p-5">
+        <form class="text-center" method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button class="btn btn-outline-secondary btn-lg">
-                Update profile
+            <p class="h4 mb-4">
+                Update Profile
+            </p>
+
+            <div class="form-row mb-4">
+                <div class="col">
+                    <!-- First name -->
+                    <p align="left"> First Name </p>
+                    <input id="id_first_name" type="text" name="first_name" class="form-control"
+                           value="{{ user.first_name }}">
+                </div>
+                <div class="col">
+                    <!-- Last name -->
+                    <p align="left"> Last Name </p>
+                    <input id="id_last_name" name="last_name" type="text" class="form-control"
+                           value="{{ user.last_name }}">
+                </div>
+            </div>
+
+            <!-- Username -->
+            <p align="left"> Username </p>
+            <input type="text" name="username" id="id_username" class="form-control mb-4"
+                   value="{{ user.username }}">
+
+            <!-- E-mail -->
+            <p align="left"> E-mail </p>
+            <input id="id_email" name="email" type="email" class="form-control mb-4"
+                   value="{{ user.email }}">
+
+            <!-- Sign up button -->
+            <button class="btn btn-secondary my-4 btn-block">
+                Update Profile
             </button>
         </form>
     </div>
