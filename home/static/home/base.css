@@ -33,6 +33,10 @@ body {
     min-height: 100vh;
 }
 
-.my_p {
-    text-indent: 20px;
+.my_a {
+    color: black;
+}
+
+.my_a:hover {
+    color: #17a2b8 ;
 }

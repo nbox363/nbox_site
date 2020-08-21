@@ -28,7 +28,7 @@ class AddCommentForm(forms.ModelForm):
             'author': forms.TextInput(attrs={'class': 'form-control',
                                              'id': 'current_user',
                                              'value': '',
-                                             'type': 'hidden'}),
+                                             'type': 'hidden',}),
             'comment_text': forms.Textarea(attrs={'placeholder': 'Your comment',
                                                   'class': 'md-textarea form-control'}),
             'article': forms.TextInput(attrs={'class': 'form-control',

@@ -5,6 +5,16 @@
 
 {% block content %}
 
+
+{#    <div class="form-group">#}
+{#        <form method="POST">#}
+{#            {% csrf_token %}#}
+{#            {{ form.as_p }}#}
+{#            <button class="btn btn-outline-secondary btn-lg">#}
+{#                Update profile#}
+{#            </button>#}
+{#        </form>#}
+{#    </div>#}
     <div class="container col-md-7 border border-secondary p-5">
         <form class="text-center" method="POST">
             {% csrf_token %}
@@ -37,6 +47,16 @@
             <input id="id_email" name="email" type="email" class="form-control mb-4"
                    value="{{ user.email }}">
 
+            <!-- Password -->
+            <div align="left">
+                Click
+                <a href="{% url 'change_password' %}">
+                    <button class="btn btn-outline-info">
+                        here
+                    </button>
+                </a>
+                to change password
+            </div><br>
             <!-- Sign up button -->
             <button class="btn btn-secondary my-4 btn-block">
                 Update Profile

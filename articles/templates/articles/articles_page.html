@@ -7,19 +7,25 @@
 {% block ar %} active {% endblock %}
 
 {% block content %}
-
-    {% for post in articles %}
-        <a class="text-dark" href="{% url 'article' post.pk %}">
-            <h3>
-                {{post.title}}
-            </h3>
-        </a>
-
-        <h6 class="text-secondary">
-            {{post.date|date:"d-m-Y"}}
-        </h6><hr>
-    {% endfor %}
-
+    <div class="container">
+        {% for post in articles %}
+            <a class="my_a" href="{% url 'article' post.pk %}">
+                <h3>
+                    {{ post.title }}
+                </h3>
+            </a>
+            <h5>
+                Category:
+                <a class="text-info" href="{% url 'category' post.category|slugify %}">
+                    {{ post.category }}
+                </a>
+            </h5>
+            <h6>
+                Date: {{ post.date|date:"d.m.Y" }}
+            </h6>
+            <hr>
+        {% endfor %}
+    </div>
     {% if user.is_superuser %}
         <br><br>
         <a href="{% url 'create' %}">

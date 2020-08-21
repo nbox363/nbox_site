@@ -8,107 +8,110 @@
 
 {% block content %}
 
-<hr>
-<h2 class="text-dark">
-    {{articles.title}}
-</h2>
+    {# Titile and category #}
+    <div class="col-md-8">
+        <h2 class="text-dark">
+            {{ articles.title }}
+        </h2><hr>
 
-<a href="{% url 'category' articles.category|slugify %}">
-    <h3>
-        {{ articles.category }}
-    </h3>
-</a>
-
-<p class="my_p">
-    {{articles.content|safe|linebreaks}}
-</p><br><br>
-
-<h6 class="text-info" align="right">
-    {{articles.date|date:"d-m-Y"}}
-</h6>
-<hr><br>
-
-<div class="container" style="margin-left: 100px">
-    <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-            <a name="redirect_after_post_a_comment">
-                <h3>
-                    Comments
-                </h3>
-                <hr>
-            </a>
-            {% if not articles.comments.all %}
-            <p>No comment Yet</p>
-
-            {% if user.is_authenticated %}
-            <a href="#1">
-                <button type="button" class="btn btn-outline-dark">
-                    Add one
+        <h5>
+            Category
+            <a href="{% url 'category' articles.category|slugify %}">
+                <button class="btn btn-outline-info">
+                    {{ articles.category }}
                 </button>
             </a>
-            {% endif %}
+        </h5>
+    </div><hr>
 
-            {% else %}
-            {% for comment in articles.comments.all %}
-            <h4 class="text-info">
-                {{ comment.author.first_name }} {{ comment.author.last_name }} |
-                <small>
-                    {{ comment.author }}
-                </small>
-            </h4>
-            {{ comment.comment_text }}
-            <hr>
-            {%  endfor %}
+    {# Content #}
+    <div class="container col-md-10">
+        <p>
+            {{ articles.content|safe|linebreaks }}
+        </p>
+    </div>
 
-            {% if user.is_authenticated %}
-            <a href="#1">
-                <button type="button" class="btn btn-outline-dark">
-                    Add comment
-                </button>
-            </a>
-            {% endif %}
+    <h6 class="text-info" align="right">
+        {{ articles.date|date:"d-m-Y" }}
+    </h6><hr><br>
 
-            {% endif %}
+
+    {# Comments #}
+
+    <div class="container" style="margin-left: 100px">
+        <div class="row">
+            <div class="col-md-6">
+                <a name="redirect_after_post_a_comment">
+                    <h3 align="center">
+                        Comments
+                    </h3><hr>
+                </a>
+
+                {% if not articles.comments.all %}
+                    <p>
+                        No comment Yet
+                    </p>
+                    {% if user.is_authenticated %}
+                        <a href="#1">
+                            <button type="button" class="btn btn-outline-dark">
+                                Add one
+                            </button>
+                        </a>
+                    {% endif %}
+                {% else %}
+                    {% for comment in articles.comments.all %}
+                        <h5 class="text-info">{{ comment.author.first_name }} {{ comment.author.last_name }}</h5>
+                        <div class="card border-secondary mb-3">
+                            <div class="card-body">
+                                <p class="card-text">
+                                    {{ comment.comment_text }}
+                                </p>
+                            </div>
+                        </div><hr>
+                    {% endfor %}
+                {% endif %}
+            </div>
         </div>
     </div>
-</div><br>
-<hr>
 
-<a href="{% url 'articles' %}">
-    <button type="button" class="btn btn-outline-secondary btn-lg">
-        Back
-    </button>
-</a><br><br>
-<hr>
 
-{% if user.is_authenticated %}
-<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-    <a name="1">
-        <h4>
-            Add comment... if you want
-        </h4>
-        <p>
-            and you now...
-        </p>
-    </a>
-    <div class="form-group">
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_table}}<br>
-            <button class="btn btn-outline-dark">
-                Add comment
-            </button>
-        </form>
-    </div>
+    {% if user.is_authenticated %}
+        <hr>
+        <div class="col-md-6">
+            <a name="1">
+                <h4>
+                    Add comment... if you want
+                </h4>
+            </a>
+            <div class="form-group">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_table }}<br>
+                    <button class="btn btn-outline-secondary">
+                        Add comment
+                    </button>
+                </form>
+            </div>
 
-    <script>
-        var name = "{{ user.id }}";
-        document.getElementById("current_user").value = name;
-        var article = "{{ articles.id }}";
-        document.getElementById("current_article").value = article;
-    </script>
-</div>
+            <script>
+                var name = "{{ user.id }}";
+                document.getElementById("current_user").value = name;
+                var article = "{{ articles.id }}";
+                document.getElementById("current_article").value = article;
+            </script>
+        </div><hr>
 
-{% endif %}
+    {% endif %}
+
+
+
+    <a href="{% url 'articles' %}">
+        <button type="button" class="btn btn-secondary btn-lg">
+            Back
+        </button>
+    </a><br><br>
+    <hr>
+
+
 
 {% endblock content %}
