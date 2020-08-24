@@ -6,50 +6,6 @@
 
 {% block content %}
 
-{#    <div class="form-group">#}
-{#        <form method="POST">#}
-{#            {% csrf_token %}#}
-{##}
-{#            <div class="form-group">#}
-{#                <label>#}
-{#                    Username#}
-{#                </label>#}
-{#                <input type="text" class="form-control" name="username">#}
-{#                <small id="emailHelp" class="form-text text-muted">#}
-{#                    We'll never share your email with anyone else.#}
-{#                </small>#}
-{#            </div>#}
-{##}
-{#            <div class="form-group">#}
-{#                <label>#}
-{#                    Password#}
-{#                </label>#}
-{#                <input type="password" class="form-control" name="password">#}
-{#            </div>#}
-{##}
-{#            <button type="submit" class="btn btn-outline-secondary">#}
-{#                Login#}
-{#            </button>#}
-{#        </form>#}
-{##}
-{#        <div class="container-fluid padding rounded-circle">#}
-{#            <div class="row alert text-center">#}
-{#                <div class="col-12">#}
-{#                    <p align="right"> If you haven't account You can just joining us#}
-{#                    </p>#}
-{#                </div>#}
-{#                <hr>#}
-{#            </div>#}
-{#        </div>#}
-{#        <div align="right">#}
-{#            Not Register? <br><br> <a href="{% url 'register' %}">#}
-{#            <button class="btn btn-outline-primary btn-lg" type="button">#}
-{#                Register#}
-{#            </button>#}
-{#        </a>#}
-{#        </div>#}
-{#    </div>#}
-
     <!-- Default form login -->
     <div class="container col-md-7">
         <form class="text-center border border-secondary p-5" method="POST">
@@ -73,7 +29,9 @@
 
             <!-- Register -->
             <p>Not a member?
-                <a href="{% url 'register' %}">Register</a>
+                <a href="{% url 'register' %}" class="btn btn-outline-info">
+                    Register
+                </a>
             </p>
 
         </form>
