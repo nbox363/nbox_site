@@ -7,24 +7,21 @@
 {% block ar %} active {% endblock %}
 
 {% block content %}
-
     {% if category_article %}
-        <h2>Category: {{ category_name }}</h2><hr>
+
+            <h2>
+                Category: {{ category_name }}
+            </h2><hr>
         <ul>
             {% for article in category_article %}
-
-                    <a class="text-dark" href="{% url 'article' article.pk %}">
-                        <h3>
-                            {{ article.title }}
-                        </h3><hr>
-                    </a>
-
+                <a class="my_a" href="{% url 'article' article.pk %}">
+                    <h3>
+                        {{ article.title }}
+                    </h3><hr>
+                </a>
             {% endfor %}
         </ul>
-
     {% else %}
-
         Sorry
-
     {% endif %}
 {% endblock %}

@@ -16,10 +16,8 @@
 
         <h5>
             Category
-            <a href="{% url 'category' articles.category|slugify %}">
-                <button class="btn btn-outline-info">
-                    {{ articles.category }}
-                </button>
+            <a href="{% url 'category' articles.category|slugify %}" class="badge badge-info">
+                {{ articles.category }}
             </a>
         </h5>
     </div><hr>
@@ -102,15 +100,11 @@
 
     {% endif %}
 
-
-
     <a href="{% url 'articles' %}">
         <button type="button" class="btn btn-outline-secondary btn-lg">
             Back
         </button>
     </a><br><br>
     <hr>
-
-
 
 {% endblock content %}
