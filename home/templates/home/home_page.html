@@ -5,7 +5,25 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
+
     <p>
         Here will be awesome content...
     </p>
+
+    <div class="text-center">
+        <button type="button" id="gifsBtn" class="btn btn-success" data-toggle="collapse" data-target="#gifs">Open
+            block
+        </button>
+        <div id="gifs" class="collapse">
+            <div class="container-fluid padding">
+                <div class="row text-center">
+                    <div class="col-sm-6 col-md-3">
+                        <awesome>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}

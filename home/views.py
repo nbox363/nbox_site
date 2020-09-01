@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from articles.models import Category
+from .gun import main
 
 
 def home(request):
     context = Category.objects.all()
-    return render(request, 'home/home_page.html', {'categories': context})
+    game = main
+    return render(request, 'home/home_page.html', {'categories': context, 'game': game})
 
 
 def about(request):
