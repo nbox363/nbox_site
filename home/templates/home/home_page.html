@@ -2,27 +2,26 @@
 
 {% load static %}
 
-{% block title %} Home {% endblock %}
+{% block title %} Home {% endblock %}0
 
 {% block content %}
 
-    <p>
-        Here will be awesome content...
-    </p>
+    <h3>
+        Just the things witch I find beautiful
+    </h3>
 
-    <div class="text-center">
-        <button type="button" id="gifsBtn" class="btn btn-success" data-toggle="collapse" data-target="#gifs">Open
-            block
-        </button>
-        <div id="gifs" class="collapse">
-            <div class="container-fluid padding">
-                <div class="row text-center">
-                    <div class="col-sm-6 col-md-3">
-                        <awesome>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container alert alert-dark col-md-5">
+        <p>
+            <span class="code1">def</span> <span class="code2">memoized</span> (<span class="code3">func</span>):<br>
+            <span class="ml-4">cache <span class="code1">=</span> {}</span><br><br>
+            <span class="ml-4">@<span class="code2">functools.wraps</span>(func)</span><br>
+            <span class="ml-4"><span class="code1">def</span> inner(<span class="code3">*args, **kwargs</span>):</span><br>
+            <span class="ml-4"><span class="ml-4">key <span class="code1">=</span> args <span class="code1">+</span> <span class="code2">tuple</span>(<span class="code2">sorted</span>(kwargs.items()))</span></span><br>
+            <span class="ml-4"><span class="ml-4"><span class="code1">if</span> key <span class="code1">not in</span> cache:</span></span><br>
+            <span class="ml-4"><span class="ml-4">cache[key] <span class="code1">=</span> func(<span class="code1">*</span>args, <span class="code1">**</span>kwargs)</span></span><br>
+            <span class="ml-4"><span class="ml-4"> <span class="code1">return</span> cache[key]</span></span><br>
+            <span class="ml-4"><span class="code1">return</span> inner</span>
+        </p>
     </div>
 
 
