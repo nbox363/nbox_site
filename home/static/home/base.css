@@ -6,15 +6,13 @@
     font-size: 30px;
 }
 
-.fa-facebook {color: #3b5998;}
-
-.fa-twitter {color: #00aced;}
-
 .fa-google-plus-g {color: #dd4b39;}
 
 .fa-github {color: #fff}
 
-.fa-facebook:hover, .fa-twitter:hover, .fa-google-plus-g:hover, .fa-github:hover {
+.fa-telegram {color: #0088cc}
+
+.fa-google-plus-g:hover, .fa-github:hover, .fa-telegram:hover {
     color: #ccc;
 }
 
@@ -64,4 +62,8 @@ img.col-md-12 {
 
 .code3 {
     color: #D19A66;
+}
+
+.code4 {
+    color: white;
 }
