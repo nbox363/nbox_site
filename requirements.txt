@@ -47,7 +47,6 @@ pycairo==1.16.2
 pycodestyle==2.5.0
 pycrypto==2.6.1
 pycups==1.9.73
-pygobject==3.26.1
 pylint==2.4.4
 pymacaroons==0.13.0
 Pymem @ git+https://github.com/srounet/Pymem@c44f9a563254535ed016eed5bbf6d9c482ce58e0
