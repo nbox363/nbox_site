@@ -75,3 +75,11 @@ h1, h2, h3, h4, h5, h6 {
     font-family: Waree;
     margin-top: 5px;
 }
+
+#fixed {
+    height: 900px;
+    background: url('image.png') no-repeat center center;
+    background-size: contain;
+    -o-background-size: contain;
+    -moz-background-size: contain;
+}

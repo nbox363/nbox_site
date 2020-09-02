@@ -6,23 +6,37 @@
 
 {% block content %}
 
-    <div class="container col-md-10">
-        <h1>
-            Just the things witch I find beautiful
-        </h1>
-    </div>
+    <div class="row padding mb-3">
+        <div class="container col-md-9">
+            <h1>
+                Just the things witch I find beautiful
+            </h1>
+        </div>
 
-    <div class="row padding col-md-5 ml-5 mt-5" style="background-color: #2E323A; border-radius: 20px;">
-        <p class="code">
-            <span class="code1">def</span> <span class="code2">memoized</span><span class="code4">(</span><span class="code3">func</span><span class="code4">):</span><br>
-            <span class="ml-4"><span class="code4">cache</span><span class="code1"> = </span><span class="code4">{}</span></span><br><br>
-            <span class="ml-4"><span class="code2">@functools.wraps</span><span class="code4">(func)</span></span><br>
-            <span class="ml-4"><span class="code1">def</span><span class="code4"> inner(</span><span class="code3">*args<span class="code4">,</span> **kwargs</span><span class="code4">)</span>:</span><br>
-            <span class="ml-4"><span class="ml-4"><span class="code4">key</span> <span class="code1">=</span> <span class="code4">args</span> <span class="code1">+</span> <span class="code2">tuple</span><span class="code4">(</span><span class="code2">sorted</span><span class="code4">(kwargs.items()))</span></span></span><br>
-            <span class="ml-4"><span class="ml-4"><span class="code1">if</span> <span class="code4">key</span> <span class="code1">not in</span> <span class="code4">cache:</span></span></span><br>
-            <span class="ml-4"><span class="ml-4"><span class="code4">cache[key]</span> <span class="code1">=</span> <span class="code4">func(</span><span class="code1">*</span><span class="code4">args,</span> <span class="code1">**</span><span class="code4">kwargs</span>)</span></span><br>
-            <span class="ml-4"><span class="ml-4"> <span class="code1">return</span> <span class="code4">cache[key]</span></span></span><br>
-            <span class="ml-4"><span class="code1">return</span> <span class="code4">inner</span></span>
-        </p>
+        <div class="container col-md-5 ml-5 mt-5" style="background-color: #2E323A; border-radius: 20px;">
+            <p class="code">
+                <span class="code1">def</span> <span class="code2">memoized</span><span class="code4">(</span><span class="code3">func</span><span class="code4">):</span><br>
+                <span class="ml-4"><span class="code4">cache</span><span class="code1"> = </span><span class="code4">{}</span></span><br><br>
+                <span class="ml-4"><span class="code2">@functools.wraps</span><span class="code4">(func)</span></span><br>
+                <span class="ml-4"><span class="code1">def</span><span class="code4"> inner(</span><span class="code3">*args<span class="code4">,</span> **kwargs</span><span class="code4">)</span>:</span><br>
+                <span class="ml-4"><span class="ml-4"><span class="code4">key</span> <span class="code1">=</span> <span class="code4">args</span> <span class="code1">+</span> <span class="code2">tuple</span><span class="code4">(</span><span class="code2">sorted</span><span class="code4">(kwargs.items()))</span></span></span><br>
+                <span class="ml-4"><span class="ml-4"><span class="code1">if</span> <span class="code4">key</span> <span class="code1">not in</span> <span class="code4">cache:</span></span></span><br>
+                <span class="ml-4"><span class="ml-4"><span class="code4">cache[key]</span> <span class="code1">=</span> <span class="code4">func(</span><span class="code1">*</span><span class="code4">args,</span> <span class="code1">**</span><span class="code4">kwargs</span>)</span></span><br>
+                <span class="ml-4"><span class="ml-4"> <span class="code1">return</span> <span class="code4">cache[key]</span></span></span><br>
+                <span class="ml-4"><span class="code1">return</span> <span class="code4">inner</span></span>
+            </p>
+        </div>
+        <div class="container col-md-4" style="background-color: #2E323A; border-radius: 20px; margin-top: 100px">
+            <p class="code">
+                <span class="code1">def</span> <span class="code2">once</span><span class="code4">(</span><span class="code3">func</span><span class="code4">):</span><br>
+                <span class="ml-4"><span class="code2">@functools.wraps</span><span class="code4">(func)</span></span><br>
+                <span class="ml-4"><span class="ml-4"><span class="code1">def</span> <span class="code2">inner</span><span class="code4">(</span><span class="code3">*args</span><span class="code4">,</span> <span class="code3">**kwargs</span><span class="code4">):</span></span></span><br>
+                <span class="ml-4"><span class="ml-4"><span class="ml-4"><span class="code1">if not</span> <span class="code4">inner.called:</span></span></span></span><br>
+                <span class="ml-4"><span class="ml-4"><span class="ml-4"><span class="code4">func(</span><span class="code1">*</span><span class="code4">args,</span> <span class="code1">**</span><span class="code4">kwargs)</span></span></span></span><br>
+                <span class="ml-4"><span class="ml-4"><span class="ml-4"><span class="code4">inner.called</span> <span class="code1">=</span> <span class="code3">True</span></span></span></span><br>
+                <span class="ml-4"><span class="code4">inner.called</span> <span class="code1">=</span> <span class="code3">False</span></span><br>
+                <span class="ml-4"><span class="code1">return</span> <span class="code4">inner</span></span><br>
+            </p>
+        </div>
     </div>
 {% endblock %}
