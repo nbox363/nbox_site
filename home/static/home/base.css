@@ -4,17 +4,16 @@
 
 .social {
     font-size: 30px;
+    margin-top: 15px;
 }
-
-.fa-google-plus-g {color: #dd4b39;}
 
 .fa-github {color: #fff}
 
 .fa-telegram {color: #0088cc}
 
-.fa-google-plus-g:hover, .fa-github:hover, .fa-telegram:hover {
-    color: #ccc;
-}
+.fa-github:hover {color: #0088cc}
+
+.fa-telegram:hover {color: #fff}
 
 footer {
     background-color: #3f3f3f;
@@ -66,4 +65,13 @@ img.col-md-12 {
 
 .code4 {
     color: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Geneva;
+}
+
+.code {
+    font-family: Waree;
+    margin-top: 5px;
 }
