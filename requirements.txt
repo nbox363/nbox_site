@@ -53,7 +53,6 @@ Pymem @ git+https://github.com/srounet/Pymem@c44f9a563254535ed016eed5bbf6d9c482c
 PyNaCl==1.1.2
 pyparsing==2.4.7
 pyRFC3339==1.0
-python-apt==1.6.5+ubuntu0.3
 python-dateutil==2.8.1
 python-debian==0.1.32
 pytz==2020.1
