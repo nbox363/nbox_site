@@ -5,7 +5,7 @@ from django.utils.timezone import now
 from django.http import HttpResponseRedirect
 
 
-from .forms import ArticlesForm, AddCommentForm
+from .forms import AddCommentForm
 from .models import Articles, Comments, Category
 
 
@@ -35,12 +35,12 @@ class ArticlesView(ListView):
         return context
 
 
-class CreateArticleView(CreateView):
-    model = Articles
-    form_class = ArticlesForm
-    template_name = 'articles/article_create_page.html'
-    initial = {'date': now()}
-    success_url = reverse_lazy('articles')
+# class CreateArticleView(CreateView):
+#     model = Articles
+#     form_class = ArticlesForm
+#     template_name = 'articles/article_create_page.html'
+#     initial = {'date': now()}
+#     success_url = reverse_lazy('articles')
 
 
 def current_category_view(request, category_name):
