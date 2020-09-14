@@ -26,13 +26,5 @@
             <hr>
         {% endfor %}
     </div>
-    {% if user.is_superuser %}
-        <br><br>
-        <a href="{% url 'create' %}">
-            <button class="btn btn-outline-secondary btn-lg" type="button">
-                Add new article
-            </button>
-        </a>
-    {% endif %}
 
 {% endblock %}
