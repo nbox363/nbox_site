@@ -1,18 +1,63 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
+from django.core.exceptions import ValidationError
+from django.contrib.auth import password_validation
 
 
-class SignUpForm(UserCreationForm):
-    email = forms.EmailField()
-    first_name = forms.CharField(max_length=120)
-    last_name = forms.CharField(max_length=120)
+class SignUpForm(forms.ModelForm):
+    email = forms.EmailField(
+        label=False,
+        widget=forms.EmailInput(attrs={'class': 'form-control',
+                                       'placeholder': 'E-mail'})
+    )
+    first_name = forms.CharField(
+        label=False,
+        max_length=120,
+        widget=forms.TextInput(attrs={'class': 'form-control',
+                                      'placeholder': 'First name'})
+    )
+    last_name = forms.CharField(
+        label=False,
+        max_length=120,
+        widget=forms.TextInput(attrs={'class': 'form-control',
+                                      'placeholder': 'Last name'})
+    )
+    username = forms.CharField(
+        label=False,
+        max_length=120,
+        widget=forms.TextInput(attrs={'class': 'form-control',
+                                      'placeholder': 'Username'})
+    )
+    password1 = forms.CharField(
+        label=False,
+        widget=forms.PasswordInput(
+            attrs={'class': 'form-control',
+                   'placeholder': 'Password'})
+    )
+    password2 = forms.CharField(
+        label=False,
+        widget=forms.PasswordInput(
+            attrs={'class': 'form-control',
+                   'placeholder': 'Repeat the password'})
+    )
 
-    def __init__(self, *args, **kwargs):
-        super(SignUpForm, self).__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs['class'] = 'form-control'
-        self.fields['password1'].widget.attrs['class'] = 'form-control'
-        self.fields['password2'].widget.attrs['class'] = 'form-control'
+    def clean_password1(self):
+        password1 = self.cleaned_data['password1']
+        if password1:
+            password_validation.validate_password(password1)
+        return password1
+
+    def clean(self):
+        super().clean()
+        password1 = self.cleaned_data['password1']
+        password2 = self.cleaned_data['password2']
+        if password1 and password2 and password1 != password2:
+            errors = {
+                'password2': ValidationError('Введенные пароли не совпадают',
+                                             code='password_mismatch')
+            }
+            raise ValidationError(errors)
 
     class Meta:
         model = User
