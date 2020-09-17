@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth import password_validation
 
 
-class SignUpForm(forms.ModelForm):
+class SignUpForm(UserCreationForm, forms.ModelForm):
     email = forms.EmailField(
         label=False,
         widget=forms.EmailInput(attrs={'class': 'form-control',
@@ -41,6 +41,9 @@ class SignUpForm(forms.ModelForm):
             attrs={'class': 'form-control',
                    'placeholder': 'Repeat the password'})
     )
+
+    def __init__(self, *args, **kwargs):
+        super(SignUpForm, self).__init__(*args, **kwargs)
 
     def clean_password1(self):
         password1 = self.cleaned_data['password1']
