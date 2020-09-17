@@ -50,8 +50,16 @@ class SignUpForm(forms.ModelForm):
 
     def clean(self):
         super().clean()
-        password1 = self.cleaned_data['password1']
-        password2 = self.cleaned_data['password2']
+        try:
+            password1 = self.cleaned_data['password1']
+            password2 = self.cleaned_data['password2']
+        except KeyError:
+            errors = {
+                'password1': ValidationError('Короткий',
+                                             code='password_mismatch')
+            }
+            raise ValidationError(errors)
+
         if password1 and password2 and password1 != password2:
             errors = {
                 'password2': ValidationError('Введенные пароли не совпадают',

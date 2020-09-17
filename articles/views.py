@@ -35,14 +35,6 @@ class ArticlesView(ListView):
         return context
 
 
-# class CreateArticleView(CreateView):
-#     model = Articles
-#     form_class = ArticlesForm
-#     template_name = 'articles/article_create_page.html'
-#     initial = {'date': now()}
-#     success_url = reverse_lazy('articles')
-
-
 def current_category_view(request, category_name):
     category_article = Articles.objects.filter(category=category_name)
     context = {'category_name':    category_name,
